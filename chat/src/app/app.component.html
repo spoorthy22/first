@@ -1,0 +1,17 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+
+ <nav>
+  <a (click)="toggleEditor('user')">User Details</a>
+  <a (click)="toggleEditor('groups')">Group Details</a>
+  <a (click)="toggleEditor('message')">Message Details</a>
+ </nav>
+ </div>
+<!-- <app-login></app-login> -->
+<app-user *ngIf="showUser"></app-user>
+<app-groups *ngIf="showGroups"></app-groups>
+<app-message *ngIf="showMessage"></app-message>
+<router-outlet></router-outlet>
