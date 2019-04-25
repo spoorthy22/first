@@ -1,0 +1,53 @@
+<h2>Groups</h2>
+
+<ul>
+ <li *ngFor="let group of groups"
+   [class.selected]="group === selectedGroups"
+  (click)="onSelect(group)">
+   <a routerLink="/groups"></a>
+   <span class="badge">User ID: {{group.userid}} </span> <span>Group ID: {{group.groupid}}</span>Group Name: {{group.groupname}}
+   <button (click)="delete(group)">Delete Group</button>
+ </li>
+</ul>
+ 
+<div>
+  <label>
+    User ID:
+    <input #groupUserid />
+    Group ID:
+    <input #groupGroupid />
+    Name:
+    <input #groupGroupname />
+  </label>
+
+    
+  <button (click)="add(groupUserid.value,groupGroupid.value,groupGroupname.value);">
+        Add Group</button>
+  </div>
+
+<div *ngIf="selectedGroups">
+
+  <div>
+    <label> user id:
+      <input [(ngModel)]="selectedGroups.userid" placeholder="userid"/>
+      
+    </label>
+  </div>
+
+
+  <div>
+    <label>group id:
+      <input [(ngModel)]="selectedGroups.groupid" placeholder="groupid"/>
+    </label>
+  </div>
+
+
+ <div>
+    <label>group name:
+      <input [(ngModel)]="selectedGroups.groupname" placeholder="groupname"/>
+    </label>
+  </div>
+
+</div>
+
+

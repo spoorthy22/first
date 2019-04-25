@@ -1,0 +1,75 @@
+<h2>Users</h2>
+
+<ul>
+ <li *ngFor="let user of users"
+   [class.selected]="user === selectedUser"
+  (click)="onSelect(user)">
+   <a routerLink="/users"></a>
+   <span class="badge">User ID: {{user.userid}} </span> <span>User Name: {{user.name}} </span> <span>Email: {{user.email}}</span> <span>Password: {{user.password}}</span> Group: {{user.groupname}}
+   <button (click)="delete(user)">Delete</button>
+ </li>
+</ul>
+ 
+<div>
+  <label>
+    User ID:
+    <input #userUserid />
+    Name:
+    <input #userName />
+    Email:
+    <input #userEmail />
+    Password:
+    <input #userPassword />
+    Group:
+    <input #userGroup />
+    
+  </label>
+
+    
+  <button (click)="add(userUserid.value,userName.value,userEmail.value,userPassword.value,userGroup.value);">
+        Add </button>
+  </div>
+
+<div *ngIf="selectedUser">
+
+  <h2>{{selectedUser.name | uppercase}} Details</h2>
+   
+   <div>
+    <label>id:
+      <input [(ngModel)]="selectedUser.userid" placeholder="userid"/>
+      
+    </label>
+  </div>
+
+
+  <div>
+    <label>name:
+      <input [(ngModel)]="selectedUser.name" placeholder="name"/>
+    </label>
+  </div>
+
+
+ <div>
+    <label>email:
+      <input [(ngModel)]="selectedUser.email" placeholder="email"/>
+    </label>
+  </div>
+
+
+  <div>
+    <label>password:
+      <input [(ngModel)]="selectedUser.password" placeholder="password"/>
+    </label>
+  </div>
+
+
+ <div>
+    <label>group:
+      <input [(ngModel)]="selectedUser.groupname" placeholder="groupname"/>
+    </label>
+  </div>
+
+</div>
+
+
+

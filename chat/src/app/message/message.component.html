@@ -1,0 +1,53 @@
+<h2>Messages</h2>
+
+<ul>
+ <li *ngFor="let message of messages"
+   [class.selected]="message === selectedMessage"
+  (click)="onSelect(message)">
+   <a routerLink="/messages"></a>
+   <span class="badge">User ID: {{message.userid}} </span> <span>Message ID: {{message.messageid}}</span>Text: {{message.messagetext}}
+   <button (click)="delete(message)">Delete Message</button>
+ </li>
+</ul>
+ 
+<div>
+  <label>
+    User ID:
+    <input #messageUserid />
+    Message ID:
+    <input #messageMessageid />
+    Text:
+    <input #messageMessagetext />
+  </label>
+
+    
+  <button (click)="add(messageUserid.value,messageMessageid.value,messageMessagetext.value);">
+        Add Message</button>
+  </div>
+
+<div *ngIf="selectedMessage">
+
+  <div>
+    <label> user id:
+      <input [(ngModel)]="selectedMessage.userid" placeholder="userid"/>
+      
+    </label>
+  </div>
+
+
+  <div>
+    <label>message id:
+      <input [(ngModel)]="selectedMessage.messageid" placeholder="messageid"/>
+    </label>
+  </div>
+
+
+ <div>
+    <label>text:
+      <input [(ngModel)]="selectedMessage.messagetext" placeholder="messagetext"/>
+    </label>
+  </div>
+
+</div>
+
+
